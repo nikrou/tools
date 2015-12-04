@@ -35,7 +35,7 @@ if $OPENSSL x509 -checkend $TIMESTAMP_LIMIT -noout -in $SSL_PEM
 then
     echo "Certificate is valid for more than $DAY_LIMIT days. Do not update." | $MAIL
 else
-    cd $(PATH_LETSENCRYPT)  && ./letsencrypt-auto -c /etc/letsencrypt/cli.ini
+    cd $PATH_LETSENCRYPT  && ./letsencrypt-auto -c /etc/letsencrypt/cli.ini
     if [ $? -ne 0 ];then
 	echo "Something goes wrong. Cannot update ssl certificate. Need to validate it manually" | $MAIL
     else
